@@ -5,14 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Train Scheduler</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <!-- Link for moment.js -->
+    <!-- Moment.js link-->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
-</head>
+    <!-- Local CSS link -->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+  
 <body>
-    
+    <!-- Title bar displayed here -->
+    <div class="container">
+        <div class="container-fluid-nav text-center py-4">
+            <h1>Music Train Schedule</h1>
+            <h3>Join us for a rockin' time on the rails in Florida</h3>
+        </div>
 
+        <!-- Current Train Schedule -->
+        <div class="card mt-3">
+            <div class="card-header">Current Schedule
+            </div>
+            <div class="p-2">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Train Name</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Frequency (min)</th>
+                            <th scope="col">Next Arrival</th>
+                            <th scope="col">Minutes Away</th>
+                        </tr>
+                    </thead>
+                    <tbody id="new-train">
+                </table>
+            </div>
+        </div>
+
+        <!-- Area to submit new train info -->
+        <div class="card mt-3 mb-5">
+            <div class="card-header">Add Train
+            </div>
+            <form class="p-3">
+                <div class="form-group">
+                    <label for="name">Train Name</label>
+                    <input type="text" class="form-control" id="name-input">
+                </div>
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" class="form-control" id="destination-input">
+                </div>
+                <div class="form-group">
+                    <label for="first-time">First Train Time (HH:mm - military time)</label>
+                    <input type="text" class="form-control" id="first-time-input">
+                </div>
+                <div class="form-group">
+                    <label for="rate">Frequency (min)</label>
+                    <input type="text" class="form-control" id="frequency-input">
+                </div>
+                <button type="submit" id="submit-train-btn" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
 
     <!-- Javascript links for Bootstrap, jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
