@@ -2,12 +2,12 @@ $(document).ready(function () {
 
     // Initialize Firebase
     var config = {
-    apiKey: "AIzaSyAUorcvEaJlVeO0fIfzrjaxMARlhVbv32o",
-    authDomain: "train-scheduler-18119.firebaseapp.com",
-    databaseURL: "https://train-scheduler-18119.firebaseio.com",
-    projectId: "train-scheduler-18119",
-    storageBucket: "train-scheduler-18119.appspot.com",
-    messagingSenderId: "316290689231"
+        apiKey: "AIzaSyAUorcvEaJlVeO0fIfzrjaxMARlhVbv32o",
+        authDomain: "train-scheduler-18119.firebaseapp.com",
+        databaseURL: "https://train-scheduler-18119.firebaseio.com",
+        projectId: "train-scheduler-18119",
+        storageBucket: "train-scheduler-18119.appspot.com",
+        messagingSenderId: "316290689231"
     };
     firebase.initializeApp(config);
 
@@ -49,9 +49,9 @@ $(document).ready(function () {
         $("#first-time-input").val("");
         $("#frequency-input").val("");
     });
-    
+
     // Retrieve values from Firebase and display in HTML
-    database.ref().on("child_added", function(childSnapshot) {
+    database.ref().orderByChild("destination").on("child_added", function (childSnapshot) {
         console.log(childSnapshot.val());
 
         // Store Firebase info in variables
@@ -88,16 +88,15 @@ $(document).ready(function () {
         // Time of next train
         var nextTrain = moment().add(minutesUntilTrain, "minutes");
         console.log("Arrival time: " + moment(nextTrain).format("HH:mm"));
-   
+
         // Add children to HTML
-        $("#new-train").append("<tr><td>" + trainName + 
-        "</td><td>" + trainDestination + 
-        "</td><td>" + trainFrequency + 
-        "</td><td>" + moment(nextTrain).format("HH:mm") + 
-        "</td><td>" + minutesUntilTrain +
-        "</td></tr>");
+        $("#new-train").append("<tr><td>" + trainName +
+            "</td><td>" + trainDestination +
+            "</td><td>" + trainFrequency +
+            "</td><td>" + moment(nextTrain).format("HH:mm") +
+            "</td><td>" + minutesUntilTrain +
+            "</td></tr>");
 
     });
-    
 });
 
